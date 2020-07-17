@@ -1,0 +1,12 @@
+
+- class_name: Links
+  class_desc: friendly links
+  link_list:
+      - name: Carlos
+        link: https://Sophistt.github.io/
+        descr: Star forever
+      - name: JerryC
+        link: https://jerryc.me/
+        avatar: https://jerryc.me/image/avatar.png
+
+
