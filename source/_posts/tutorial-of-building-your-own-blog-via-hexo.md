@@ -3,7 +3,6 @@ title: Tutorial of Building Your Own Blog via Hexo
 date: 2020-07-18 01:16:32
 tags: Hexo
 categories: Frontend
-mathjax: true
 ---
 
 # Install dependencies
@@ -63,6 +62,24 @@ hexo s(serve)
 ```
 After executing the command `hexo s`, we could open the local website through the browser by entering [lcoalhost:4000](localhost:4000).
 
+## Deploy
+
+**Hexo** provides a fast and convenient one-click deployment function, allowing you to deploy your website to the server with just one command. Before using the deploy command, `_config.yml` is required to modified. Use **Github** platform as an example:
+```
+deploy:
+  type: git
+  repo: <repository url> #https://bitbucket.org/Sophistt/sophistt.github.io
+  branch: [branch]
+  message: [message]
+```
+
+After modifying `_config.yml`, use the following commands to deploy your personal website to **Github** platform:
+```bash
+hexo clean  # if something wrong happens to your website  
+hexo g -d 
+```
+
+
 
 # Tricks
 
@@ -83,6 +100,7 @@ npm config set registry https://registry.npm.taobao.org
 
 - [nodesource](https://github.com/nodesource/distributions)
 - [npm install安装到一半卡住的解决方案](https://juejin.im/post/5d8eeb2de51d4578200cc968)
+- [部署|Hexo](https://hexo.io/zh-cn/docs/one-command-deployment.html)
 
 
 
