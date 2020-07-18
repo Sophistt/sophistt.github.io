@@ -119,4 +119,6 @@ kramed:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/Sophistt/sophistt.github.io
+  branch: master
