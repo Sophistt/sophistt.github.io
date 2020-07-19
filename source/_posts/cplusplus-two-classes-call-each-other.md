@@ -1,8 +1,10 @@
 ---
 title: Two Classes Call each other (C++)
-date: 2020-07-18 23:52:21
-tags: C++
-categories: Program
+date: 2019-05-22 23:52:21
+tags: OOP
+categories: 
+  - Programming
+  - C++
 ---
 
 # 两个对象互相访问成员函数及成员变量

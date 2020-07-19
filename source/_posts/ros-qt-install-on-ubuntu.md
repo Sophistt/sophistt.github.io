@@ -1,8 +1,8 @@
 ---
 title: Ros Qt Install and Configuration on Ubuntu
 date: 2019-05-23 14:14:30
-tags: Ros
-categories: Linux
+tags: ROS
+categories: Robot
 ---
 
 # Download and Install
