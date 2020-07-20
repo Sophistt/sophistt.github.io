@@ -3,7 +3,7 @@ name: 自動部署 Hexo
 on:
   push:
     branches:
-      - master
+      - hexo
 
 jobs:
   build:
