@@ -3,18 +3,20 @@ name: 自動部署 Hexo
 on:
   push:
     branches:
-      - master
+      - hexo
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
 
     steps:
       - name: 開始運行
         uses: actions/checkout@v1
+        with:
+          submodules: true
 
       - name: 設置 Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -40,7 +42,7 @@ jobs:
 
       - name: 部署博客
         run: |
-          hexo clean && hexo g && hexo douban && gulp
+          hexo clean && hexo g
           cd ./public
           git init
           git config user.name "${{secrets.GIT_NAME}}"
