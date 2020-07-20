@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: 開始運行
         uses: actions/checkout@v1
+        with:
+          submodules: true
 
       - name: 設置 Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -45,8 +47,6 @@ jobs:
           git init
           git config user.name "${{secrets.GIT_NAME}}"
           git config user.email "${{secrets.GIT_EMAIL}}"
-          git submodule init
-          git submodule update
           git add .
           git commit -m "Update"
           git push --force --quiet "https://${{secrets.GH_TOKEN}}@${{secrets.GH_REF}}" master:master
