@@ -138,7 +138,42 @@ int main() {
 }
 ```
 
+{% note info %}
+Close the file is a good practice, and it can clean up unnecessary memory space.
+{% endnote %}
+
+## Read a file
+
+To read from a file, use either the `ifstream` or `fstream` object, and the name of the file.
+
+Note that we also use a `while` loop together with the `getline()` function or other functions.
+
+```c++
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+  // Create a text string, which is used to output the text file
+  string myText;
+
+  // Read from the text file
+  ifstream MyReadFile("filename.txt");
+
+  // Use a while loop together with the getline() function to read the file line by line
+  while (getline (MyReadFile, myText)) {
+    // Output the text from the file
+    cout << myText;
+  }
+  // Close the file
+  MyReadFile.close();
+}
+```
+
 # References
 
-- [name](url)
-- [name](url)
+- [Python 文件I/O](https://www.runoob.com/python/python-files-io.html)
+- [Python File Handling: Create, Open, Append, Read, Write](https://www.guru99.com/reading-and-writing-files-in-python.html)
+- [C++ Files](https://www.w3schools.com/cpp/cpp_files.asp)
