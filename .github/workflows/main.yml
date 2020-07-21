@@ -40,11 +40,11 @@ jobs:
         run: |
           npm install
          
-
-      - name: 部署博客
+      - name: Set pandoc
         uses: docker://pandoc/core:2.9
-        with:
-          run: |
+
+      - name: 部署博客        
+        run: |
             hexo clean && hexo g
             cd ./public
             git init
