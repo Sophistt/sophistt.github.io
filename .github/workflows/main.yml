@@ -32,6 +32,8 @@ jobs:
         run: |
           export TZ='Asia/Shanghai'
           npm install hexo-cli -g
+          npm uninstall hexo-renderer-marked --save
+          npm install hexo-renderer-pandoc --save
 
       - name: 緩存
         uses: actions/cache@v1
@@ -44,8 +46,7 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           npm install
-          npm uninstall hexo-renderer-marked --save
-          npm install hexo-renderer-pandoc --save
+         
 
       - name: 部署博客
         run: |
