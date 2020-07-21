@@ -17,6 +17,7 @@ In localization and navigation of robots, kalman filter is the most commonly use
 ## Prerequisite
 
 Before using kalman filter, 3 prerequisites should be statisfied:
+
 - State transition probability must be the linear function fo parameters with random Gaussian noise
 - Measurement probabilty also has to contain Gaussian component
 - Initial confidence is normally distributed

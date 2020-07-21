@@ -148,7 +148,7 @@ class Vehicle(pygame.sprite.Sprite):
 ## Vehicle update logic
 
 在进入一次 Game Loop 中，都会调用一次`update`方法去更新车辆的位置和朝向。
-**更新方法：**，通过计算车辆计算加速度与离散时间 dt 的乘积得到车辆速度。然后通过车辆速度，轴距，dt， 根据[**阿克曼几何**](https://sophistt.github.io/study/2019/06/04/ackman-geometrics-and-pure-pursuit-algorithm.html)计算出车辆位置和车头朝向，最后调用`pygame.transform.rotate()`方法将Surface旋转合适的角度。
+**更新方法：**，通过计算车辆计算加速度与离散时间 dt 的乘积得到车辆速度。然后通过车辆速度，轴距，dt， 根据[**阿克曼几何**](https://sophistt.github.io/2019/06/14/ackman-geometrics-and-pure-pursuit-algorithm/)计算出车辆位置和车头朝向，最后调用`pygame.transform.rotate()`方法将Surface旋转合适的角度。
 ```python
     def update(self, dt):
         # Logic update
