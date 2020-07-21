@@ -40,8 +40,8 @@ jobs:
         run: |
           npm install
          
-      - name: Set pandoc
-        uses: docker://pandoc/core:2.7
+      - name: Pandoc Document Converter
+        uses: maxheld83/pandoc-action@v2
         
       - name: 部署博客        
         run: |
