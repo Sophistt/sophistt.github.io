@@ -41,9 +41,7 @@ $$
   \begin{bmatrix}
   x_{1, t} \\ x_{2, t} \\ . \\ . \\ x_{n, t}
   \end{bmatrix} \quad
-
   and \quad 
-
   u_t =
   \begin{bmatrix}
   u_{1, t} \\ u_{2, t} \\ . \\ . \\ u_{m, t}
@@ -77,9 +75,7 @@ $$
   0 \quad 0 \quad 1 \quad 0 \\
   0 \quad 0 \quad 0 \quad 1 \\
   \end{bmatrix}
-
   \quad and \quad
-
   B = 
   \begin{bmatrix}
   dt \quad 0 \\
@@ -96,40 +92,31 @@ Finally, we can get the status equation:
 $$
 \begin{align*}
   x_t  = A_tx_{t-1} + B_tu_t + \epsilon_t
-
   \Rightarrow
-
   \begin{bmatrix}
   x_t \\ y_t \\ v^x \\ v^y
   \end{bmatrix} =  
-
   \begin{bmatrix}
   1 \quad 0 \quad 0 \quad 0 \\
   0 \quad 1 \quad 0 \quad 0 \\
   0 \quad 0 \quad 1 \quad 0 \\
   0 \quad 0 \quad 0 \quad 1 \\
   \end{bmatrix}
-  
   \begin{bmatrix}
   x_{t-1} \\ y_{t-1} \\ v^x \\ v^y
   \end{bmatrix} +
-
   \begin{bmatrix}
   dt \quad 0 \\
   0 \quad dt \\
   0 \quad 0 \\
   0 \quad 0 \\
   \end{bmatrix}
-
   \begin{bmatrix}
   v^x \\ v^y
   \end{bmatrix} + \epsilon_t = 
-
-
   \begin{bmatrix}
   x_{t-1} + v^x * dt \\ y_{t-1} + v^y * dt \\ v^x \\ v^y
   \end{bmatrix} + \epsilon_t  
-
 \end{align*}
 $$
 
@@ -139,23 +126,17 @@ $H$ is a $k * n$ dimensional matrix, so that we can get the equation as follow:
 $$
 \begin{align*}
   z_t  = H_tx_{t} + \delta_t
-
   \Rightarrow
-
   \begin{bmatrix}
   1 \quad 0 \quad 0 \quad 0 \\
   0 \quad 1 \quad 0 \quad 0 \\
   \end{bmatrix} 
-
   \begin{bmatrix}
   x_t \\ y_t \\ v^x \\ v^y
   \end{bmatrix} + \delta_t =
-
   \begin{bmatrix}
   x_t \\ y_t 
   \end{bmatrix} + \delta_t
-  
-
 \end{align*}
 $$
 
@@ -184,7 +165,8 @@ $$
 $$
 
 Explanaiton of parameters in these equations:
-- $\hat{x}^-_t$: the priori estimated value of status vector at moment $t$ <br>
+
+- $\hat{x}^-_t$: the priori estimated value of status vector at moment $t$ 
 - $\hat{x}_t$: the posterior estimated value of status vector at moment $t$, the result of kalman filter
 - $\hat{x}_{t-1}$: the posterior estimated value of status vector at moment $t-1$
 - $A$: status transition matrix
@@ -223,22 +205,18 @@ $$
   \frac{dv^x}{dx} \quad \frac{dv^x}{dy} \quad \frac{dv^x}{dv^x} \quad \frac{dv^x}{dv^y} \\
   \frac{dv^y}{dx} \quad \frac{dv^y}{dy} \quad \frac{dv^y}{dv^x} \quad \frac{dv^y}{dv^y} 
   \end{bmatrix} =
-
   \begin{bmatrix}
   1 \quad 0 \quad dt \quad 0 \\
   0 \quad 1 \quad 0 \quad dt \\
   0 \quad 0 \quad 1 \quad 0 \\
   0 \quad 0 \quad 0 \quad 1 \\
   \end{bmatrix}
-	
   \\ \\ 
-
   J_{H} = 
   \begin{bmatrix}
   \frac{dx}{dx} \quad \frac{dx}{dy} \quad \frac{dx}{dv^x} \quad \frac{dx}{dv^y} \\
   \frac{dy}{dx} \quad \frac{dy}{dy} \quad \frac{dy}{dv^x} \quad \frac{dy}{dv^y} \\
   \end{bmatrix} =
-  
   \begin{bmatrix}
   1 \quad 0 \quad 0 \quad 0 \\
   0 \quad 1 \quad 0 \quad 0 \\

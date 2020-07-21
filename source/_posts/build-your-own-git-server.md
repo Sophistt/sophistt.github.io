@@ -19,6 +19,7 @@ categories: Programming
 sudo adduser git # 创建 git 用户
 su git           # 切换到 git 用户下     
 ```
+
 ## 创建远程仓库
 
 在远程服务器中， 需要创建项目代码仓库文件夹，然后在该文件夹下初始化一个空的代码仓库:

@@ -83,8 +83,7 @@ In the field of autonomous driving, how to track the planning path well is a rea
 Here we will discuss how to use LQR Algorithm to track the planning trajectory of self-driving vehicles.
 
 <div align="center">
-    <img src="https://i.imgur.com/bcIh4nV.png" width="20%" /><br>
-    <font size="4" color="red">Path tracking</font>
+  <img src="https://i.imgur.com/bcIh4nV.png" width="20%" alt="Path Tracking"/><br>
 </div>
 
 If the state $x=[s, \dot{s}, \theta, \dot{\theta}]$ of the self-driving vehicle and the planned trajectory (black points) is known, the state of the vehicle in the soon future (showed as the red points) could be calculated through a sequence fo given control signals u according to the state model $x_{t+1}=Ax_t+Bu_t.$
@@ -118,8 +117,7 @@ In autonomous driving, LQR Controller can be used for lateral steering wheel con
 Firstly, we should analyze the forces of vehicles.
 
 <div align="center">
-    <img src="https://i.imgur.com/mlCMAbP.png" width="60%" /><br>
-    <font size="4" color="red">Vehicle Dynamics</font>
+  <img src="https://i.imgur.com/mlCMAbP.png" width="60%" alt="Vehicle Dynamics"/><br>
 </div>
 
 As for lateral steering wheel control, we should pay more attention on **lateral forces**. 
@@ -156,7 +154,7 @@ $$
 Where $C_{af}$  and $C_{ar}$ are **lateral stiffness** of front and rear wheels respectively, $δ$ is front wheel angle and $θ_{Vf}$  and $θ_{Vr}$ are **velocity deviation angle** of front and rear wheels.
 
 <div align="center">
-    <img src="https://i.imgur.com/f1tGIac.png" width="60%" /><br>
+  <img src="https://i.imgur.com/f1tGIac.png" width="60%" /><br>
 </div>
 
 From the image above, we can get the below equations, 
@@ -183,37 +181,37 @@ $$
 To get the state space expression of vehicle motion, we introduce lateral error $e_1$ and heading angle error $e_2$. Hence we get the below equations,
 
 <div align="center">
-    <img src="https://i.imgur.com/0Qm7f1d.png" /><br>
+  <img src="https://i.imgur.com/0Qm7f1d.png" /><br>
 </div>
 
 In the assumption of uniform motion, a further deduction is,
 
 <div align="center">
-    <img src="https://i.imgur.com/wikvooY.png" /><br>
+  <img src="https://i.imgur.com/wikvooY.png" /><br>
 </div>
 
 Similarly,
 
 <div align="center">
-    <img src="https://i.imgur.com/hqMxWKH.png" /><br>
+  <img src="https://i.imgur.com/hqMxWKH.png" /><br>
 </div>
 
 And back to the equations (6) and (7), we can get the equations based on $e_1$ and $e_2$,
 
 <div align="center">
-    <img src="https://i.imgur.com/E7lxHPm.png" /><br>
+  <img src="https://i.imgur.com/E7lxHPm.png" /><br>
 </div>
 
 Finally, change it to state space expression and we get the vehicle dynamics model expression.
 
 <div align="center">
-    <img src="https://i.imgur.com/chncUWK.png" /><br>
+  <img src="https://i.imgur.com/chncUWK.png" /><br>
 </div>
 
 Set
 
 <div align="center">
-    <img src="https://i.imgur.com/9ysTDUl.png" /><br>
+  <img src="https://i.imgur.com/9ysTDUl.png" /><br>
 </div>
 
 The final state expression is 

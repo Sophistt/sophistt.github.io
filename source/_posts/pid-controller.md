@@ -17,8 +17,7 @@ A PID controller continuously calculates an error value $e(t)$ as the difference
 hence the name.
 
 <div align="center">
-    Image of PID Controller<br>
-    <img src="https://i.imgur.com/ci6iFtK.png"/><br>
+  <img src="https://i.imgur.com/ci6iFtK.png" alt="Image of PID Controller"/><br>
 </div>
 
 ## Positional PID Controller 
@@ -26,7 +25,7 @@ hence the name.
 From the above image, we can get the equation of Postional PID controller:
 
 <div align="center">
-    <img src="https://i.imgur.com/LDFUNlL.png"/><br>
+  <img src="https://i.imgur.com/LDFUNlL.png"/><br>
 </div>
 
 In this equation, $e(t)$ means the error between target output and current output; $K_P$ is the coefficient of the proportional process; $T_I$ is the coefficient of the integral process; $T_D$ is the coefficient of the derivative process.
@@ -34,7 +33,7 @@ In this equation, $e(t)$ means the error between target output and current outpu
 However, in industrial control systems, the input and output values are discrete and we obtain them by sampling periodically by sensors. Therefore, the equation of PID controller should be transfromed into the discrete equation, in which $T$ is the sampling period.
 
 <div align="center">
-    <img src="https://i.imgur.com/izO8g6R.png"/><br>
+  <img src="https://i.imgur.com/izO8g6R.png"/><br>
 </div>
 
 Through the above equation, the control signal $u$ could be calculated by sampling the output $y$ of the discrete system each step. Therefore, such equation is named **Positional PID Controller**, since it calculates the input signals each step.
@@ -46,13 +45,13 @@ Unfortunately, **Positional PID controller** needs to save and compute all the e
 A new equation of positional PID controller in the $e_{k-1}$ moment is introduced,
 
 <div align="center">
-    <img src="https://i.imgur.com/FLoSUkB.png"/><br>
+  <img src="https://i.imgur.com/FLoSUkB.png"/><br>
 </div>
 
 Use the equation (1) minus eqution (2), equation (3) could be obtained.
 
 <div align="center">
-    <img src="https://i.imgur.com/Rjk3kJs.png"/><br>
+  <img src="https://i.imgur.com/Rjk3kJs.png"/><br>
 </div>
 
 Through equation (3), we can calculate the increment of control signals only by saving past errors $e_{k-1}$, $e_{k-2}$.
@@ -88,8 +87,7 @@ Hence, we can optimize the parameters of PID Controller through the following pr
 - Set coefficients of PID controller to the computed parameter and optimize them if necessary. 
 
 <div align="center">
-    Image of Empirical Formula<br>
-    <img src="https://i.imgur.com/ErCxwpD.png"/><br>
+  <img src="https://i.imgur.com/ErCxwpD.png" alt="Image of Empirical Formula"/><br>
 </div>
 
 # References

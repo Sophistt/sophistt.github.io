@@ -5,7 +5,7 @@ mathjax: true
 tags: 
 categories: 
   - Study
-  - Autonomous Drving
+  - Autonomous Driving
 ---
 
 # Ackermann Geometrics
@@ -17,9 +17,7 @@ categories:
 根据图内关系，可以推算出车辆前轴偏转角与圆心半径 $r$ 的关系, $L$为车辆轴距。
 
 $$
-
 \delta = arctan(\frac{L}{r})
-
 $$
 
 # Pure Pursuit Algorithm

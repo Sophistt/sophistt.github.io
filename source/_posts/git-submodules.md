@@ -2,7 +2,7 @@
 title: Git Submodules
 date: 2020-07-20 15:50:54
 tags: Git
-categories: Programmming
+categories: Programming
 ---
 
 # Description
