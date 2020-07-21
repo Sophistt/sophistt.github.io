@@ -13,6 +13,11 @@ jobs:
         node-version: [12.x]
 
     steps:
+      - name: 安装pandoc
+        run: |
+          - wget https://github.com/jgm/pandoc/releases/download/2.7/pandoc-2.7-1-amd64.deb
+          - dpkg -i ./pandoc-2.7-1-amd64.deb
+            
       - name: 開始運行
         uses: actions/checkout@v1
         with:
@@ -39,9 +44,6 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           npm install
-         
-      - name: Pandoc Document Converter
-        uses: maxheld83/pandoc-action@v2
         
       - name: 部署博客        
         run: |
