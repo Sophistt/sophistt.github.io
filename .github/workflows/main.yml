@@ -17,6 +17,11 @@ jobs:
         uses: actions/checkout@v1
         with:
           submodules: true
+      
+      - name: Set pandoc
+        uses: docker://pandoc/core:2.9
+        with:
+          args: "--help" # gets appended to pandoc command
 
       - name: 設置 Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -39,6 +44,8 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           npm install
+          npm uninstall hexo-renderer-marked --save
+          npm install hexo-renderer-pandoc --save
 
       - name: 部署博客
         run: |
