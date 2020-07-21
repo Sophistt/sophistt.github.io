@@ -26,7 +26,7 @@ jobs:
       - name: 安裝 Hexo CI
         run: |
           export TZ='Asia/Shanghai'
-          npm install hexo-cli -g
+          npm install hexo-cli -g && npm uninstall hexo-renderer--marked --save && npm install hexo-renderer-pandoc --save
 
       - name: 緩存
         uses: actions/cache@v1
