@@ -17,11 +17,6 @@ jobs:
         uses: actions/checkout@v1
         with:
           submodules: true
-      
-      - name: Set pandoc
-        uses: docker://pandoc/core:2.9
-        with:
-          args: "--help" # gets appended to pandoc command
 
       - name: 設置 Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -32,8 +27,6 @@ jobs:
         run: |
           export TZ='Asia/Shanghai'
           npm install hexo-cli -g
-          npm uninstall hexo-renderer-marked --save
-          npm install hexo-renderer-pandoc --save
 
       - name: 緩存
         uses: actions/cache@v1
@@ -49,12 +42,14 @@ jobs:
          
 
       - name: 部署博客
-        run: |
-          hexo clean && hexo g
-          cd ./public
-          git init
-          git config user.name "${{secrets.GIT_NAME}}"
-          git config user.email "${{secrets.GIT_EMAIL}}"
-          git add .
-          git commit -m "Update"
-          git push --force --quiet "https://${{secrets.GH_TOKEN}}@${{secrets.GH_REF}}" master:master
+        uses: docker://pandoc/core:2.9
+        with:
+          run: |
+            hexo clean && hexo g
+            cd ./public
+            git init
+            git config user.name "${{secrets.GIT_NAME}}"
+            git config user.email "${{secrets.GIT_EMAIL}}"
+            git add .
+            git commit -m "Update"
+            git push --force --quiet "https://${{secrets.GH_TOKEN}}@${{secrets.GH_REF}}" master:master
