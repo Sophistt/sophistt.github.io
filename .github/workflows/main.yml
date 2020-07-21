@@ -41,7 +41,7 @@ jobs:
           npm install
          
       - name: Set pandoc
-        uses: docker://pandoc/core:2.10
+        uses: docker://pandoc/core:2.7
         
       - name: 部署博客        
         run: |
