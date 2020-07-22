@@ -97,15 +97,15 @@ index_img: https://i.loli.net/2020/07/18/kLvu9YBsHpRMX6i.png
 default_top_img: https://i.loli.net/2020/07/18/ZRpGWSlBINYQVDE.png
 
 # the banner image of archive page
-archive_img:
+archive_img: https://i.loli.net/2020/07/22/73NFUIgTDBXvSys.png
 
 # the banner image of tag page
 # tag page, look like https://xxxxxxxxx.com/tags/butterfly
-tag_img:
+tag_img: https://i.loli.net/2020/07/22/MvKErh4JnbyQgs5.png
 
 # the banner image of category page
 # category page, look like https://xxxxxxxxx.com/categories/butterfly
-category_img:
+category_img: https://i.loli.net/2020/07/22/aQMrYIUftV85GcA.png
 
 # If you are using hexo-douban, you can configure it (如果你有使用 hexo-douban,可配置這個)
 # douban:
@@ -129,6 +129,9 @@ cover:
     - https://i.loli.net/2020/07/18/gxnJzBQKNyFeYp5.png
     - https://i.loli.net/2020/07/18/31FN46cDIOujAfz.png
     - https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png
+    - https://i.loli.net/2020/07/22/q1hKbxNmuj4f7So.png
+    - https://i.loli.net/2020/07/22/P87Ubj9eJYsLHqt.png
+    - https://i.loli.net/2020/07/22/eRfMwotuyhWCAxH.png
 
 # Replace Broken Images (替換無法顯示的圖片)
 error_img:
