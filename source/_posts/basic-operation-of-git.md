@@ -22,11 +22,9 @@ categories: Programming
 - 远程仓库
   服务器端的版本库，通过`git push`, `git pull`指令进行本地仓库和远程仓库的同步。
 
-  <div align="center">
-    <br><font size="4">Git Workflow</font> <br>
-    <a href="https://imgur.com/GXW3rPh"><img src="https://i.imgur.com/GXW3rPh.png" title="source: imgur.com" /></a>
-    <br><font color="gray">From http://files.zeroturnaround.com/pdf/zt_git_cheat_sheet.pdf</font>
-</div>
+
+<img src="https://i.imgur.com/GXW3rPh.png" title="source: imgur.com" alt="From http://files.zeroturnaround.com/pdf/zt_git_cheat_sheet.pdf"/>
+
 
 ## Common Commands
 
@@ -226,10 +224,8 @@ git clone -b [branch_name] server.name@repository.git
 - 特性开发分支(dev-feature)
   开发人员针对自己开发特性创建的基于 dev 的分支，开发完成后合并到 dev 分支上。
 
-<div align="center">
-    <br><font size="4">Git Branch Control</font> <br>
-    <a href="https://imgur.com/UbwLdqs"><img src="https://i.imgur.com/UbwLdqs.png" title="source: imgur.com" /></a>
-</div>
+<img src="https://i.imgur.com/UbwLdqs.png" title="source: imgur.com" alt="Git Branch Control"/>
+
 
 ## 初始化配置
 

@@ -80,9 +80,8 @@ double getDistance(double lat1, double lng1, double lat2, double lng2)
 
 ## 球面模型
 
-{% note info %}
 原理推导过程比较麻烦，看参考1。
-{% endnote %}
+
 
 ### 实现代码(C++)
 

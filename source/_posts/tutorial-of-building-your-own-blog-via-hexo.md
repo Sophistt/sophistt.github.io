@@ -18,10 +18,8 @@ sudo apt-get install -y nodejs
 ```
 
 - Windows:
-Download and install **Node.js** from its [offical website](https://nodejs.org/zh-cn/).
-{% note info %}
-**npm** will be installed automaticallly while **Node.js** being installed.
-{% endnote %}
+Download and install **Node.js** from its [offical website](https://nodejs.org/zh-cn/). 
+
 
 ## Install Hexo
 
@@ -29,6 +27,10 @@ Download and install **Node.js** from its [offical website](https://nodejs.org/z
 ```bash
 npm install hexo-cli -g 
 ```
+
+{% note info %}
+**npm** will be installed automaticallly while **Node.js** being installed.
+{% endnote %}
 
 # Build the blog
 
@@ -78,8 +80,6 @@ After modifying `_config.yml`, use the following commands to deploy your persona
 hexo clean  # if something wrong happens to your website  
 hexo g -d 
 ```
-
-
 
 # Tricks
 
