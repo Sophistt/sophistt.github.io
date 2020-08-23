@@ -1,16 +1,10 @@
-\---
-
+---
 title: Things to Be Known while Studying in Netherlands
-
 date: 2020-08-23 11:37:08
-
 tags:
-
- \- Netherlands
-
+  - Netherlands
 categories: Life
-
-\---
+---
 
 兜兜转转，最终还是在新冠的危机下选择离开最安全的祖国，来到荷兰这边留学。第一次独自离开中国，来到语言不同的地方，面临的不仅有学习上的困难，更多的是生活上的种种问题。在此做个总结，算是对自己打破舒适区的一个交待，也可以给后来人一些经验。
 
