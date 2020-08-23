@@ -120,7 +120,7 @@ categories: Life
 
 ### 联系家庭医生
 
-学校一般会有固定的家庭医生，所以学生党可以通过学校来联系，同时也可以在Google Maps上搜索**Huisarts**或者在[家庭医生登记网站](bit.ly/2ZIVMJL)上面输入邮编来寻找家庭医生。
+学校一般会有固定的家庭医生，所以学生党可以通过学校来联系，同时也可以在Google Maps上搜索**Huisarts**或者在[家庭医生登记网站](https://www.independer.nl/huisarts/intro.aspx)上面输入邮编来寻找家庭医生。
 
 # 荷兰日常生活
 
