@@ -154,3 +154,51 @@ categories: Life
 - [IKEA](https://www.ikea.com)
 - [MediaMarkt](https://www.mediamarkt.nl)
 
+## 垃圾分类
+
+荷兰的实行严格的垃圾分类，不按照规定倾倒垃圾可能面临罚款。因此，无论是为了入乡随俗还是为了避免罚款，垃圾分类都是很重要的一项工作。在荷兰的垃圾分类可以分为**纸质垃圾**，**有机垃圾**，**家庭垃圾**，**塑料垃圾**，**玻璃瓶**和**小型化学垃圾**等，详细的介绍可以[此网站](https://www.mijnafvalwijzer.nl/en/5612WN/197/)上查看，这里做一些简单的说明。
+
+在荷兰不同分类的垃圾需要放到不同的垃圾桶，同时有的城市还有自动垃圾处理系统，称为**Underground container**。
+
+### Paper and Cardboard
+
+Paper and cardboard are collectedso that they can be recycled into, for example, newspaper, toilet paper, packaging materials, etc. A quarter of all household waste is made of paper and cardboard. 
+
+纸类垃圾可以放到**underground container**或者带有**蓝色**标示的垃圾桶里。
+
+{% note info %}
+
+在处理纸类垃圾的时候，不要用塑料袋包裹，可以用纸带捆好或者放进硬纸箱里。
+
+{% endnote %}
+
+### Organic waste
+
+Organic waste (GFT in Dutch) is vegetable, fruit and garden waste. This involves natural or organic waste such as fruit peels, vegetable leftovers, weeds and tea bags. 
+
+一般来说，organic waste和household waste需要分开存放，用**grey cart**装household waste，用**green cart**装有机垃圾。
+
+但是，住在**apartment**的人例外，可以将有机垃圾与生活垃圾一起堆放，然后放入到**underground container**中，使用该系统需要垃圾卡**citypass**。
+
+### Household waste
+
+Household waste is waste that can not be separated for reuse or recycling like cigarettes, rubber and cork. Waste types that you can separate, such as organic waste, glass and paper, are not household waste.
+
+### Glass waste
+
+Glass waste refers to glass packaging, such as an empty jar of peanut butter, pasta sauces, wine bottles and perfume bottles. Glass is 100% recyclable and therefore it is important to separate it from other waste. Large glass items and sheets of glass, such as window panes, qualify as waste and should be taken to one of the waste recycling points.
+
+对于玻璃垃圾，会有一个专门的大垃圾箱进行回收处理，其标示为**Glas**，有时候还会将玻璃瓶根据颜色进行分类，分为**无色**，**绿色**和**棕色**。
+
+### Plastic waste
+
+Plastic waste refers to plastic packaging like empty bags, bags, bottles, cups and plastic covers. It does not include old toys, videotapes, broken garden chairs and other plastic items. This kind of plastic waste is classified as household waste (garden chairs and other large plastic items are bulky household waste). 
+
+塑料垃圾也有自己专门的处理箱，一般是橙色标示。
+
+### 垃圾箱查询
+
+在荷兰，不同垃圾箱分布在不同的位置。为了方便的寻找自己附近的特定垃圾箱子，可以通过[该网站](https://www.mijnafvalwijzer.nl)进行查询，输入邮编即可。
+
+
+
