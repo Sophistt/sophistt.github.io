@@ -15,11 +15,9 @@ A subspace of a vector space $V$ is a subset $H$ of $V$ that has two properties.
 1. H is closed under vector addition. That is, for each $u$ and $v$ in $H$, the sum $u+v$ is in $H$.
 2. $H$ is closed under multiplication by scalars. That is, for each $u$ in $H$ and each scalar $c$, the vector $cu$ is in $H$.
 
-{% note info %}
+**Note**
 
 In some materials, $H$ has the third property that **The zero vector of** $V$ **is in** $H$. This property could be inclued in **Property 2** while $c=0$. 
-
-{% end note %}
 
 For example,
 
@@ -44,11 +42,9 @@ span(v_1, v_2, ... v_n) = \{ \sum_{i=1}^{n}\alpha_iv_i|\alpha_i \in \Re \}
 $$
 Means span($v_1, v_2, ... v_n$) is generated / spanned by $v_1, v_2, ... v_n$.
 
-{% note info %}
+**Theorem**
 
 span($v_1, v_2, ... v_n$) is a subspace of $V$.
-
-{% end note%}
 
 ## Null space
 
