@@ -12,7 +12,7 @@ categories:
 
 A subspace of a vector space $V$ is a subset $H$ of $V$ that has two properties. 
 
-1. H is closed under vector addition. That is, for each $u$ and $v$ in $H$, the sum $u+v$ is in $H$.
+1. $H$ is closed under vector addition. That is, for each $u$ and $v$ in $H$, the sum $u+v$ is in $H$.
 2. $H$ is closed under multiplication by scalars. That is, for each $u$ in $H$ and each scalar $c$, the vector $cu$ is in $H$.
 
 {% note info %}
@@ -79,3 +79,90 @@ A =
 \end{bmatrix}
 $$
 how to get $Nul(A)$ and $Col(A)$?
+
+**Answer**
+
+Convert matrix $A$ to the row minimal matrix. The specific calculation process is omitted here.
+$$
+A=>
+\begin{bmatrix}
+1 \quad 0 \quad 7 \quad 0 \quad 85 \\
+0 \quad 1 \quad -3 \quad 0 \quad 31 \\
+0 \quad 0 \quad 0 \quad 1 \quad -7 \\
+\end{bmatrix}
+$$
+We know that the **pivot number** represents the location of **dependent variables** and the remaining variables are called **free variables**. In this row minimal matrix, the pivot numbers are 1, 2, 4.（非零行的第一个非零元所在的位置）Hence we could get two basis of the vector space:
+$$
+\xi_1 = 
+\begin{bmatrix}
+x_1 \\
+y_1 \\
+0 \\
+z_1 \\
+1
+\end{bmatrix} \quad
+\xi_2 = 
+\begin{bmatrix}
+x_2 \\
+y_2 \\
+1 \\
+z_2 \\
+0
+\end{bmatrix}
+$$
+let $A\xi_1 = 0$ and $A\xi_2 = 0$, we get the values of $x, y, z$ respectively. 
+$$
+\xi_1 = 
+\begin{bmatrix}
+-85 \\
+-31 \\
+0 \\
+7 \\
+1
+\end{bmatrix} \quad
+\xi_2 = 
+\begin{bmatrix}
+-7 \\
+3 \\
+1 \\
+0 \\
+0
+\end{bmatrix}
+$$
+**Null space**
+
+Use the basis to represent null space
+$$
+\mathrm{Nul}A = \mathrm{span}\{\xi_1, \xi_2\}
+$$
+**Column space**
+
+After we get **pivot number**, we get the column space as well since column space consists of the column vectors of pivot number in $A$.
+$$
+\mathrm{Col}A=\mathrm{span}\{
+\begin{bmatrix}
+1 \\
+3 \\
+2 \\
+2 
+\end{bmatrix},
+\begin{bmatrix}
+2 \\
+4 \\
+3 \\
+2 
+\end{bmatrix},
+\begin{bmatrix}
+3 \\
+0 \\
+1 \\
+-3 
+\end{bmatrix}
+\}
+$$
+
+# References
+
+- [如何快速写出方程组的解](https://www.q-math.com/?p=629)
+- [线性代数复习（六）：子空间，零空间及列空间 subspace, null and column space](https://www.youtube.com/watch?v=KiRKulz0OGw&feature=youtu.be)
+
