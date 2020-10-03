@@ -1,5 +1,5 @@
 ---
-title: Things to Be Known while Studying in Netherlands
+title: 留学在荷兰所应该知道的事
 date: 2020-08-23 11:37:08
 tags:
   - Netherlands
