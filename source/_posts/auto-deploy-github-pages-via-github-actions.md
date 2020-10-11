@@ -1,5 +1,5 @@
 ---
-title: (Repost) Auto Deploy Github Pages via Github Actions
+title: (转载) 通过 Github Action 自动部署 Github pages
 date: 2020-07-20 22:05:22
 tags: Git
 categories: Programming

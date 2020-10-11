@@ -1,5 +1,5 @@
 ---
-title: Configuration of Colorscheme and Syntax in vim
+title: VIM 的主题配色与语法高亮设置
 date: 2019-09-11 10:50:59
 tags: vim
 categories: Writing
