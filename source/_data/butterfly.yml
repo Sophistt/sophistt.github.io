@@ -535,6 +535,8 @@ font:
   global-font-size: 16px
   code-font-size: 
   font-family: -apple-system, 'Arvo', BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif
+  font-weight: 400
+  font-style: regular
   code-font:
 
 # Font settings for the site title and site subtitle
