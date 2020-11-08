@@ -13,7 +13,7 @@ menu:
   Categories: /categories/ || fas fa-folder-open
   Entertainment || fas fa-gamepad:
     - Music || /music/ || fas fa-music
-    - Movie || /movies/ || fas fa-video
+    # - Movie || /movies/ || fas fa-video
     - Photo || /photos/ || fas fa-camera
   Link: /link/ || fas fa-link
   About: /about/ || fas fa-heart

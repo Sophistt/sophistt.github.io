@@ -103,7 +103,7 @@ theme: butterfly
 
 ## APlayer
 aplayer:
-  asset_inject: false
+  asset_inject: true
   meting: true
 
 ## Markdown Katex
