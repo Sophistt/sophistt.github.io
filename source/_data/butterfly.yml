@@ -91,7 +91,7 @@ avatar:
   effect: false
 
 # the banner image of home page
-index_img: https://i.loli.net/2020/10/03/AIcu2m7RzWhSdVi.png
+index_img: https://i.loli.net/2020/12/10/PdGIWuXL9iQR24O.png
 
 # if the banner of page not setting,it will show the top_img
 default_top_img: https://i.loli.net/2020/07/18/ZRpGWSlBINYQVDE.png
@@ -427,7 +427,7 @@ qihu_site_verification:
 
 theme_color:
   enable: true
-  main: "#C522DE"
+  main: "#2894FF"
   paginator: "#009dff"
   button_hover: "#FF7242"
   text_selection: "#00c4b6"
@@ -587,7 +587,7 @@ aside:
     description:
   card_announcement:
     enable: true
-    content: This is a new blog and posts are being migrated ...
+    content: Break your comfort zone to improve yourself, even if only a little bit each time.
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
