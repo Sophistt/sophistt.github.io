@@ -1,5 +1,5 @@
 ---
-title: Control theory learning (1)
+title: Fundamental Concepts (Control Theory Learning 1)
 date: 2021-01-28 13:50:50
 mathjax: true
 tags: Control Theory
