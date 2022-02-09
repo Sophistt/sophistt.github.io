@@ -47,10 +47,10 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ''
   wrap: true
-  hljs: true
+  hljs: false
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -107,14 +107,22 @@ aplayer:
   meting: true
 
 ## Markdown Katex
-kramed:
-  gfm: true
-  pedantic: false
-  sanitize: false
-  tables: true
-  breaks: true
-  smartLists: true
-  smartypants: true
+# kramed:
+#   gfm: true
+#   pedantic: false
+#   sanitize: false
+#   tables: true
+#   breaks: true
+#   smartLists: true
+#   smartypants: true
+
+## Markdown
+markdown:
+  plugins:
+    - plugin:
+      name: '@neilsustc/markdown-it-katex'
+      options:
+        strict: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

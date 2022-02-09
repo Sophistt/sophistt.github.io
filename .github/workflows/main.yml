@@ -31,7 +31,11 @@ jobs:
       - name: 安裝 Hexo CI
         run: |
           export TZ='Asia/Shanghai'
-          npm install hexo-cli -g && npm uninstall hexo-renderer--marked --save && npm install hexo-renderer-pandoc --save
+          npm install hexo-cli -g 
+      
+      - name: 更换 Hexo 渲染器 (渲染公式)
+        run: | 
+          npm uninstall hexo-renderer--marked --save && npm install hexo-renderer-markdown-it --save && npm install @neilsustc/markdown-it-katex --save
       
       - name: 安装 Hexo pug 以及 stylus 的渲染器
         run: |

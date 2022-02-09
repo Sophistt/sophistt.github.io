@@ -1,7 +1,7 @@
 ---
 title: Kalman Filter
 date: 2019-07-24 16:02:26
-mathjax: true
+katex: true
 tags: 
 categories: 
   - Study
@@ -98,10 +98,10 @@ $$
   x_t \\ y_t \\ v^x \\ v^y
   \end{bmatrix} =  
   \begin{bmatrix}
-  1 \quad 0 \quad 0 \quad 0 \\
-  0 \quad 1 \quad 0 \quad 0 \\
-  0 \quad 0 \quad 1 \quad 0 \\
-  0 \quad 0 \quad 0 \quad 1 \\
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1 \\
   \end{bmatrix}
   \begin{bmatrix}
   x_{t-1} \\ y_{t-1} \\ v^x \\ v^y
