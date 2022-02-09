@@ -1,0 +1,1 @@
+&& npm uninstall hexo-renderer--marked --save && npm install hexo-renderer-pandoc --save
