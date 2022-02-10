@@ -1,7 +1,7 @@
 ---
 title: Model Predictive Controller
 date: 2020-05-15 12:23:35
-mathjax: true
+katex: true
 tags: 
 categories:
   - Study

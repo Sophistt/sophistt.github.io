@@ -1,7 +1,7 @@
 ---
 title: 动态系统 (System Dynamics)
 date: 2020-08-28 22:40:00
-mathjax: true
+katex: true
 tags: System & Control
 categories: Study
 ---

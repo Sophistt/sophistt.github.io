@@ -1,7 +1,7 @@
 ---
 title: Fundamental Concepts (Control Theory Learning 1)
 date: 2021-01-28 13:50:50
-mathjax: true
+katex: true
 tags: Control Theory
 categories: Study
 ---
@@ -73,21 +73,21 @@ with $c_i=b_i-b_0a_i, i= 1, 2,..., n$
 Then we can get the controllability Canonical Form
 $$
 \begin{split}
-A &=
+A & =
 \begin{bmatrix}
-0 & 1 & 0 & ... & 0\\
-0 & 0 & 1 & ... & 0 \\
+0 & 1 & 0 & \dots & 0 \\
+0 & 0 & 1 & \dots & 0 \\
 \vdots & \vdots & \vdots & \vdots & \vdots \\
-0 & 0 & 0 & ... & 1 \\
--a_n & -a_{n-1} & -a_{n-2} & ... & -a_1
-\end{bmatrix} \quad
-&B=
+0 & 0 & 0 & \dots & 1 \\
+-a_n & -a_{n-1} & -a_{n-2} & \dots & -a_1
+\end{bmatrix} \\
+B & =
 \begin{bmatrix}
 0 \\ 0 \\ \vdots \\ 0 \\ 1
 \end{bmatrix} \\
-C &= \begin{bmatrix}
-c_n  & c_{n-1} & ... & c_2 & c_1
-\end{bmatrix} \quad
-&D  = [b_0]
+C & = \begin{bmatrix}
+c_n  & c_{n-1} & \dots & c_2 & c_1
+\end{bmatrix} \\
+D & = [b_0]
 \end{split}
 $$

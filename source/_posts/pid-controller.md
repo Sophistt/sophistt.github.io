@@ -1,7 +1,7 @@
 ---
 title: Proportional-Integral-Derivative(PID) Controller
 date: 2019-12-04  16:47:36
-mathjax: true
+katex: true
 tags:
 categories: 
   - Study

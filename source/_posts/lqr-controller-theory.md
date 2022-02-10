@@ -1,7 +1,7 @@
 ---
 title: Linear-Quadratic-Regulator(LQR) Controller
 date: 2020-05-02 12:00:16
-mathjax: true
+katex: true
 tags: 
 categories:
   - Study

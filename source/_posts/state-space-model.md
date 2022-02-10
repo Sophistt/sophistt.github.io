@@ -1,8 +1,8 @@
 ---
 title: State Space Model
 date: 2020-11-8 10:30:00
-mathjax: true
-tags: System & Control
+katex: true
+tags: Control Theory
 categories: Study
 ---
 
