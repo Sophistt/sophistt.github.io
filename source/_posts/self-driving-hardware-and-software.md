@@ -1,7 +1,7 @@
 ---
 title: Self-driving Hardware and Software Architectures
 date: 2019-09-24 14:02:34
-mathjax: true
+katex: true
 tags:
 categories:
   - Study

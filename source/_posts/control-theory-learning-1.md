@@ -20,16 +20,18 @@ Given a CT(*Continuous-time*) or DT(*Discrete-time*) system,
 
 $$
 \begin{split}
-&\dot{x}(t) = Ax(t) + Bu(t) \quad| \quad x(t+1) &= Ax(t)+Bu(t) \\
-& y(t) = Cx(t) + Du(t)   \quad |\quad \quad \quad y(t)& = Cx(t)+Du(t)
+ \mathrm{CT}: \quad & \dot{x}(t) = Ax(t) + Bu(t)  \\
+                    & y(t)       = Cx(t) + Du(t)  \\
+ \mathrm{DT}: \quad & x(t+1)     = Ax(t) + Bu(t) \\
+                    & y(t)       = Cx(t) + Du(t)
 \end{split}
 $$
 
 Their transfer functions are,
 $$
 \begin{split}
-G(s) & = C(sI-A)^{-1}B+D, \quad \mathbb{Laplace} \\
-G(z) & = C(zI-A)^{-1}B+D, \quad \mathbb{z-transfrom}
+G(s) & = C(sI-A)^{-1}B+D, \quad \mathrm{Laplace} \\
+G(z) & = C(zI-A)^{-1}B+D, \quad \mathrm{z-transfrom}
 \end{split}
 $$
 Notice that transfer fucntion descirbes properties of the sytem in frequency domain.

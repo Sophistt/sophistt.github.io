@@ -1,7 +1,7 @@
 ---
 title: Ackermann Geometrics and Pure Pursuit Algorithm
 date: 2019-06-14 15:15:48
-mathjax: true
+katex: true
 tags: 
 categories: 
   - Study

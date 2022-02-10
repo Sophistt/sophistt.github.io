@@ -1,7 +1,7 @@
 ---
 title: Subspace, Null Space and Col Space in Linear Algebra
 date: 2020-08-29 10:15:26
-mathjax: true
+katex: true
 tags: linear-algebra
 categories: 
   - Study
