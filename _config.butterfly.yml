@@ -89,7 +89,7 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://i.loli.net/2020/12/10/PdGIWuXL9iQR24O.png
+index_img: https://s2.loli.net/2022/02/23/EzbYhG4mXiBQZwc.png
 
 # If the banner of page not setting, it will show the top_img
 default_top_img: https://i.loli.net/2020/07/18/ZRpGWSlBINYQVDE.png
@@ -133,6 +133,7 @@ cover:
     - https://i.loli.net/2020/07/22/q1hKbxNmuj4f7So.png
     - https://i.loli.net/2020/07/22/P87Ubj9eJYsLHqt.png
     - https://i.loli.net/2020/07/22/eRfMwotuyhWCAxH.png
+    - https://i.loli.net/2020/12/10/PdGIWuXL9iQR24O.png
 
 # Replace Broken Images (替換無法顯示的圖片)
 error_img:
@@ -520,11 +521,11 @@ enter_transitions: true
 # canvas_ribbon (靜止彩帶背景)
 # See: https://github.com/hustcc/ribbon.js
 canvas_ribbon:
-  enable: false
+  enable: true
   size: 150
   alpha: 0.6
   zIndex: -1
-  click_to_change: false
+  click_to_change: true
   mobile: false
 
 # Fluttering Ribbon (動態彩帶)
