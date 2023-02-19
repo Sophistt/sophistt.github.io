@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Bash Scripts Exploration | DeepSpace</title><meta name="keywords" content="bash"><meta name="author" content="Carlos"><meta name="copyright" content="Carlos"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="What is bash script? Bash is a Unix shell, which is a command line interface(CLI) for interacting with the operating system(OS). Bash script which contains command lines can be run in Bash and finish">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bash Scripts Exploration">
+<meta property="og:url" content="http://sophistt.github.io/2019/07/17/Programming/bash-scripts-exploration/index.html">
+<meta property="og:site_name" content="DeepSpace">
+<meta property="og:description" content="What is bash script? Bash is a Unix shell, which is a command line interface(CLI) for interacting with the operating system(OS). Bash script which contains command lines can be run in Bash and finish">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/07/18/gxnJzBQKNyFeYp5.png">
+<meta property="article:published_time" content="2019-07-17T13:52:32.000Z">
+<meta property="article:modified_time" content="2023-02-19T16:20:36.849Z">
+<meta property="article:author" content="Carlos">
+<meta property="article:tag" content="bash">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/18/gxnJzBQKNyFeYp5.png"><link rel="shortcut icon" href="/static/favicon.ico"><link rel="canonical" href="http://sophistt.github.io/2019/07/17/Programming/bash-scripts-exploration/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":450},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Bash Scripts Exploration',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-19 16:20:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/static/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">48</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> Posts</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> Entertainment</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera"></i><span> Photo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-link"></i><span> Books</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/07/18/gxnJzBQKNyFeYp5.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">DeepSpace</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> Posts</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> Entertainment</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera"></i><span> Photo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-link"></i><span> Books</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Bash Scripts Exploration</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2019-07-17T13:52:32.000Z" title="Created 2019-07-17 13:52:32">2019-07-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-02-19T16:20:36.849Z" title="Updated 2023-02-19 16:20:36">2023-02-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">550</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>3min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Bash Scripts Exploration"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>What is bash script?</strong></p>
+<p>Bash is a Unix shell, which is a command line interface(CLI) for interacting with the operating system(OS).</p>
+<p>Bash script which contains command lines can be run in <strong>Bash</strong> and finish extremely excellent work.</p>
+<h1>Prepared work</h1>
+<h2 id="Create-a-bash-script">Create a bash script</h2>
+<p>In Linux operating system, suffix name is not necessary so that we can name the bash script whatever we want. For example, we can create a folder named <code>scripts</code> and<br>
+a bash script named <code>experiment</code> in it.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> scripts</span><br><span class="line"><span class="built_in">cd</span> scripts</span><br><span class="line"><span class="built_in">touch</span> experiment</span><br></pre></td></tr></table></figure>
+<p>In order to access scripts in this folder anywhere, adding this directory to <strong>ENV PATH</strong> is recommended.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># optional</span></span><br><span class="line"><span class="built_in">export</span> PATH=/path/to/scripts:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<h2 id="Make-the-bash-script-executable">Make the bash script executable</h2>
+<p>To run the <code>experiment</code> script, it’s necessary to change its mode.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x experiment</span><br></pre></td></tr></table></figure>
+<h2 id="Add-symbol">Add symbol</h2>
+<p>Each bash script should begins with the following line for specifying the interpreter.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br></pre></td></tr></table></figure>
+<h1>Basic syntax</h1>
+<h2 id="Echo">Echo</h2>
+<p>Keyword <code>echo</code> can be used to output contents to the screen. Add the following line in <code>experiment</code> script and run the script, <strong>Hello world</strong> can be seen in the terminal.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> Hello world</span><br></pre></td></tr></table></figure>
+<h2 id="Variables">Variables</h2>
+<p>Variables must be declared before being invoked. Use <code>=</code> to assign variables and use <code>$</code> to call them.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">name=<span class="string">&quot;Jack&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> Hello, I am <span class="variable">$name</span></span><br></pre></td></tr></table></figure>
+<h2 id="Read">Read</h2>
+<p><code>read</code> can be used to assign variables from input on ternimal.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> what are you?</span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> <span class="built_in">who</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> Hello, <span class="variable">$who</span></span><br></pre></td></tr></table></figure>
+<h2 id="Conditions">Conditions</h2>
+<p>Structures like <code>for</code>, <code>if...else</code> can also be used in bash scripts. But operators used in bash are different from those in programming languages.</p>
+<h3 id="Judgment">Judgment</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Bash Operators</th>
+<th style="text-align:center">Operators</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-eq</td>
+<td style="text-align:center">==</td>
+<td style="text-align:center">equal</td>
+</tr>
+<tr>
+<td style="text-align:center">-ne</td>
+<td style="text-align:center">!=</td>
+<td style="text-align:center">not equal</td>
+</tr>
+<tr>
+<td style="text-align:center">-gt</td>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">greater than</td>
+</tr>
+<tr>
+<td style="text-align:center">-ge</td>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">greater than or equal</td>
+</tr>
+<tr>
+<td style="text-align:center">-lt</td>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">less than</td>
+</tr>
+<tr>
+<td style="text-align:center">-le</td>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">less than or equal</td>
+</tr>
+<tr>
+<td style="text-align:center">-z</td>
+<td style="text-align:center">== null</td>
+<td style="text-align:center">is null</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> How much is it?</span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> prize</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$prize</span> -gt 100 ]</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> Too expensive</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> Great</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h3 id="Looping">Looping</h3>
+<p>Looping is another powerful structure in programming language, we also can use it in bash scripts as follow.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">FILES=/opt/*</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$FILES</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> $(<span class="built_in">basename</span> <span class="variable">$file</span>)</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h1>Open another terminal</h1>
+<p>Sometimes multiple screens are required to display different messages. To satisfy this requirment, <code>gnome-ternimal</code> can be used to open another ternimal and run commands in it.<br>
+Add <code>gnome-terminal</code> in a bash script, a new ternimal will open when we run the script.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">gnome-ternimal</span><br></pre></td></tr></table></figure>
+<h2 id="Optional-arguments">Optional arguments</h2>
+<p>Some arguments are used for customizing the new ternimal.</p>
+<ul>
+<li><code>--maximize</code>: Maximize the ternimal</li>
+<li><code>--full-screen</code>: The terminal Occupy the full screen after opening.</li>
+<li><code>--window --window</code>: Open two terminals</li>
+<li><code>--window --tab --window --tab --tab</code>: Open two ternimals and open tabs in them</li>
+<li><code>--geometry=80x25+10+10</code>: Set size of the terminal</li>
+<li><code>-e</code>: run the following commands in the new terminal, the following commands should be included in ‘’.</li>
+</ul>
+<p>Fro example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">gnome-terminal --geometry=80x25 -e <span class="string">&#x27;echo $PATH&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>However, the terminal will disappear after executing commands. In order to retain the terminal after executing commands, we can use the following commands to maintain the window.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">gnome-terminal --geometry=80x25 -e <span class="string">&#x27;bash -c &quot;echo $PATH;exec bash&quot;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h1>References</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.taniarascia.com/how-to-create-and-use-bash-scripts/">How to Create and Use Bash Scripts</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39465823/article/details/83786685">linux下使用shell脚本打开多个terminal并在其中运行程序的方法</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Carlos</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://sophistt.github.io/2019/07/17/Programming/bash-scripts-exploration/">http://sophistt.github.io/2019/07/17/Programming/bash-scripts-exploration/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/bash/">bash</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/07/18/gxnJzBQKNyFeYp5.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/07/24/Control%20Theory/kalman-filter/"><img class="prev-cover" src="https://i.loli.net/2020/07/18/nargHlvmL9ftBQe.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Kalman Filter</div></div></a></div><div class="next-post pull-right"><a href="/2019/07/05/ROS/roslaunch/"><img class="next-cover" src="https://i.loli.net/2020/07/18/gxnJzBQKNyFeYp5.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">ROS Launch Exploration</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2019/07/31/Programming/differences-in-commands-source-sh-bash/" title="Differences in Serveral Executable Commands in Linux"><img class="cover" src="https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-31</div><div class="title">Differences in Serveral Executable Commands in Linux</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/static/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Carlos</div><div class="author-info__description">但行好事，莫问前程</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">48</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Sophistt" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wang.canye@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">A blog that records life and learning, welcome to leave your comments through the chat box.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Prepared work</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-a-bash-script"><span class="toc-number">1.1.</span> <span class="toc-text">Create a bash script</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Make-the-bash-script-executable"><span class="toc-number">1.2.</span> <span class="toc-text">Make the bash script executable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-symbol"><span class="toc-number">1.3.</span> <span class="toc-text">Add symbol</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">Basic syntax</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Echo"><span class="toc-number">2.1.</span> <span class="toc-text">Echo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variables"><span class="toc-number">2.2.</span> <span class="toc-text">Variables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read"><span class="toc-number">2.3.</span> <span class="toc-text">Read</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conditions"><span class="toc-number">2.4.</span> <span class="toc-text">Conditions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Judgment"><span class="toc-number">2.4.1.</span> <span class="toc-text">Judgment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Looping"><span class="toc-number">2.4.2.</span> <span class="toc-text">Looping</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">Open another terminal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Optional-arguments"><span class="toc-number">3.1.</span> <span class="toc-text">Optional arguments</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/01/29/yuque/Java%20%E8%B0%83%E8%AF%95%E4%B8%8E%E7%9B%91%E6%8E%A7/" title="Java 调试与监控"><img src="https://i.loli.net/2020/07/22/q1hKbxNmuj4f7So.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 调试与监控"/></a><div class="content"><a class="title" href="/2023/01/29/yuque/Java%20%E8%B0%83%E8%AF%95%E4%B8%8E%E7%9B%91%E6%8E%A7/" title="Java 调试与监控">Java 调试与监控</a><time datetime="2023-01-29T02:42:55.000Z" title="Created 2023-01-29 02:42:55">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/28/yuque/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java 多线程"><img src="https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 多线程"/></a><div class="content"><a class="title" href="/2023/01/28/yuque/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java 多线程">Java 多线程</a><time datetime="2023-01-28T07:57:02.000Z" title="Created 2023-01-28 07:57:02">2023-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/28/yuque/Java%20%E5%9F%BA%E7%A1%80/" title="Java 基础"><img src="https://i.loli.net/2020/07/18/nargHlvmL9ftBQe.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础"/></a><div class="content"><a class="title" href="/2023/01/28/yuque/Java%20%E5%9F%BA%E7%A1%80/" title="Java 基础">Java 基础</a><time datetime="2023-01-28T07:34:43.000Z" title="Created 2023-01-28 07:34:43">2023-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/24/Control%20Theory/swarm-trajectory-generation-using-Bernstein-basis/" title="Swarm Trajectory Planning Using Bernstein Basis (Paper Reading)"><img src="https://i.loli.net/2020/12/10/PdGIWuXL9iQR24O.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Swarm Trajectory Planning Using Bernstein Basis (Paper Reading)"/></a><div class="content"><a class="title" href="/2022/03/24/Control%20Theory/swarm-trajectory-generation-using-Bernstein-basis/" title="Swarm Trajectory Planning Using Bernstein Basis (Paper Reading)">Swarm Trajectory Planning Using Bernstein Basis (Paper Reading)</a><time datetime="2022-03-24T13:10:28.000Z" title="Created 2022-03-24 13:10:28">2022-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/System%20Theory%20for%20Control/stabilizability/" title="Stabilizability (Control Theory Learning 6)"><img src="https://i.loli.net/2020/07/22/P87Ubj9eJYsLHqt.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Stabilizability (Control Theory Learning 6)"/></a><div class="content"><a class="title" href="/2021/01/28/System%20Theory%20for%20Control/stabilizability/" title="Stabilizability (Control Theory Learning 6)">Stabilizability (Control Theory Learning 6)</a><time datetime="2021-01-28T16:55:28.000Z" title="Created 2021-01-28 16:55:28">2021-01-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Carlos</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadDisqusjs () {
+  function addDisqusjsCSS () {
+    const ele = document.createElement('link')
+    ele.rel = 'stylesheet'
+    ele.href= 'https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css'
+    document.getElementsByTagName('head')[0].appendChild(ele)
+  }
+
+  function initDisqusjs () {
+    window.DISQUS = null
+    new DisqusJS(Object.assign({
+      shortname: 'carlos-5x7rfajzgr',
+      identifier: '2019/07/17/Programming/bash-scripts-exploration/',
+      url: 'http://sophistt.github.io/2019/07/17/Programming/bash-scripts-exploration/',
+      title: 'Bash Scripts Exploration',
+      apikey: 'fPzRlQddxWqrg1XON0Zwk8yXvz1rv1BCBeRLVpbKZ1BAcY6hzFmyxdDxCJO6oInA',
+    },null))
+  }
+
+
+  window.disqusReset = initDisqusjs
+
+  if (window.disqusJsLoad) initDisqusjs()
+  else {
+    addDisqusjsCSS()
+    getScript('https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js').then(initDisqusjs)
+    window.disqusJsLoad = true
+  }
+}
+
+if ('Disqusjs' === 'Disqusjs' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqusjs)
+  else loadDisqusjs()
+}
+else {
+  function loadOtherComment () {
+    loadDisqusjs()
+  }
+}
+
+</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script>(function(d, w, c) {
+    w.ChatraID = 'JwLA6CnnhzvkT7JZh';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

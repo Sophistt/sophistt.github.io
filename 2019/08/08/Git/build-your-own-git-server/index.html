@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Build Your Own Git Server | DeepSpace</title><meta name="keywords" content="Git"><meta name="author" content="Carlos"><meta name="copyright" content="Carlos"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="当我们在做团队项目时，如果需要进行代码管理而代码又不方便开源上传到 Github，则有两种方法可以满足多人协作以及代码版本管理的需求：  升级Github企业用户 搭建自己的代码托管服务器  下面主要介绍如何搭建自己的代码托管服务器。 远程服务器准备工作 创建 git 用户 创建一个新的 git 用户专门用于管理远程 git 代码仓库，可以防止 git 用户的配置文件与当前用户的配置文件发生冲突。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build Your Own Git Server">
+<meta property="og:url" content="http://sophistt.github.io/2019/08/08/Git/build-your-own-git-server/index.html">
+<meta property="og:site_name" content="DeepSpace">
+<meta property="og:description" content="当我们在做团队项目时，如果需要进行代码管理而代码又不方便开源上传到 Github，则有两种方法可以满足多人协作以及代码版本管理的需求：  升级Github企业用户 搭建自己的代码托管服务器  下面主要介绍如何搭建自己的代码托管服务器。 远程服务器准备工作 创建 git 用户 创建一个新的 git 用户专门用于管理远程 git 代码仓库，可以防止 git 用户的配置文件与当前用户的配置文件发生冲突。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png">
+<meta property="article:published_time" content="2019-08-08T16:59:19.000Z">
+<meta property="article:modified_time" content="2023-02-19T16:20:36.849Z">
+<meta property="article:author" content="Carlos">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png"><link rel="shortcut icon" href="/static/favicon.ico"><link rel="canonical" href="http://sophistt.github.io/2019/08/08/Git/build-your-own-git-server/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":450},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Build Your Own Git Server',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-19 16:20:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/static/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">48</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> Posts</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> Entertainment</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera"></i><span> Photo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-link"></i><span> Books</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">DeepSpace</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> Posts</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> Entertainment</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fas fa-camera"></i><span> Photo</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-link"></i><span> Books</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Build Your Own Git Server</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2019-08-08T16:59:19.000Z" title="Created 2019-08-08 16:59:19">2019-08-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-02-19T16:20:36.849Z" title="Updated 2023-02-19 16:20:36">2023-02-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Programming/">Programming</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>4min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Build Your Own Git Server"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>当我们在做团队项目时，如果需要进行代码管理而代码又不方便开源上传到 Github，则有两种方法可以满足<strong>多人协作</strong>以及<strong>代码版本管理</strong>的需求：</p>
+<ul>
+<li>升级Github企业用户</li>
+<li>搭建自己的代码托管服务器</li>
+</ul>
+<p>下面主要介绍如何<strong>搭建自己的代码托管服务器</strong>。</p>
+<h1>远程服务器准备工作</h1>
+<h2 id="创建-git-用户">创建 git 用户</h2>
+<p>创建一个新的 git 用户专门用于管理远程 git 代码仓库，可以防止 git 用户的配置文件与当前用户的配置文件发生冲突。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser git <span class="comment"># 创建 git 用户</span></span><br><span class="line">su git           <span class="comment"># 切换到 git 用户下     </span></span><br></pre></td></tr></table></figure>
+<h2 id="创建远程仓库">创建远程仓库</h2>
+<p>在远程服务器中， 需要创建项目代码仓库文件夹，然后在该文件夹下初始化一个空的代码仓库:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/Repositories/Project.git  <span class="comment"># 创建文件夹</span></span><br><span class="line"><span class="built_in">cd</span> ~/Repositories/Project.git  <span class="comment"># 进入到仓库文件夹</span></span><br><span class="line">git init --bare  <span class="comment"># 初始化一个空仓库</span></span><br></pre></td></tr></table></figure>
+<h1>免密码提交</h1>
+<p>在创建了远程仓库后，已经可以通过 <code>git clone ssh://server.ip:/path/to/*.git</code> 的命令来进行远程仓库的使用了，但是每次 <code>git push/pull/fetch</code> 等操作都会要求输入密码，十分的麻烦，因此下面我们通过生成 <strong>ssh</strong> 密钥来实现免密码连接远程仓库。</p>
+<h2 id="本地电脑生成密钥">本地电脑生成密钥</h2>
+<p>使用 <code>ssh-keygen</code> 命令即可在本地电脑生成密钥，第一次询问是生成密钥的路径，第二次询问是生成密钥的密码。按照自己想要的方式设置好后，在 <code>~/.ssh</code> 目录下回生成 <code>id_rsa</code> 和 <code>id_rsa.pub</code> 两个文件，分别是私钥和公钥。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa <span class="comment"># 生成密钥</span></span><br></pre></td></tr></table></figure>
+<h2 id="远程仓库授权公钥">远程仓库授权公钥</h2>
+<p>在本地电脑中生成的公钥需要在远程仓库中授权才能使用免密码操作。</p>
+<p>打开 <code>id_ras.pub</code> 文件，将里面的内容添加到远程服务器的 <code>~/.ssh/authorized_keys</code> 文件里面即可。</p>
+<h1>关联远程仓库</h1>
+<p>承接第一节的内容，在远程建立的一个空的仓库之后，如果想将本地的仓库关联到远程仓库并推送，可以通过以下代码实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin ssh://git@server.ip:/path/to/*.git <span class="comment"># 将本地仓库关联到远程仓库</span></span><br><span class="line"></span><br><span class="line">git push -u origin master <span class="comment"># 只有第一次远程推送需要加入 -u 参数</span></span><br></pre></td></tr></table></figure>
+<h1>利用Gitlab搭建私有代码管理平台</h1>
+<p>Gitlab是一个开源的GIT仓库管理平台，主要面向中型代码团队，允许代码的成员在上面创建，修改代码库，并且追踪，修复bugs。搭建私有的Gitlab代码管理平台即相当于拥有一个部署在内网的Github，Gitlab网站，团队成员可以通过内网的网页访问代码。</p>
+<h2 id="安装必须的Ubuntu-Packages">安装必须的Ubuntu Packages</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y curl openssh-server ca-certificates</span><br></pre></td></tr></table></figure>
+<h2 id="安装邮件通知服务">安装邮件通知服务</h2>
+<p>Gitlab提供多种方式发送邮件通知，其中推荐是的<strong>Postfix</strong>和<strong>SMTP</strong>服务：</p>
+<ul>
+<li>使用<strong>Postfix</strong>:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y postfix</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用<strong>SMTP</strong>服务不需要安装额外的依赖库，只需要在部署好Gitlab后修改<code>/etc/gitlab/gitlab.rb</code>文件并执行<code>gitlab-ctl reconfigure</code>命令即可。通过<a target="_blank" rel="noopener" href="https://docs.gitlab.com/omnibus/settings/smtp.html">此链接</a>可以查看配置样例。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">gitlab_rails[<span class="string">&#x27;smtp_enable&#x27;</span>] = <span class="literal">true</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_address&#x27;</span>] = <span class="string">&quot;smtp.server&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_port&#x27;</span>] = 465</span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_user_name&#x27;</span>] = <span class="string">&quot;smtp user&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_password&#x27;</span>] = <span class="string">&quot;smtp password&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_domain&#x27;</span>] = <span class="string">&quot;example.com&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_authentication&#x27;</span>] = <span class="string">&quot;login&quot;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_enable_starttls_auto&#x27;</span>] = <span class="literal">true</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;smtp_openssl_verify_mode&#x27;</span>] = <span class="string">&#x27;peer&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If your SMTP server does not like the default &#x27;From: gitlab@localhost&#x27; you</span></span><br><span class="line"><span class="comment"># can change the &#x27;From&#x27; with this setting.</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;gitlab_email_from&#x27;</span>] = <span class="string">&#x27;gitlab@example.com&#x27;</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;gitlab_email_reply_to&#x27;</span>] = <span class="string">&#x27;noreply@example.com&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装Gitlab">安装Gitlab</h2>
+<ul>
+<li>完成Gitlab依赖包的安装以后，即可通过添加Gitlab的下载链接来安装Gitlab：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装Gitlab并修改访问地址：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo EXTERNAL_URL=<span class="string">&quot;http://gitlab.example.com&quot;</span> apt-get install gitlab-ce</span><br></pre></td></tr></table></figure>
+<p>安装完毕后，即可通过在浏览器中输入 <a href="">http://gitlab.example.com</a> 来访问Gitlab代码部署平台。</p>
+<h2 id="配置Gitlab">配置Gitlab</h2>
+<p>如果想修改Gitlab相关的内容，可以通过修改其配置文件，修改后需要通过<code>gitlab-ctl reconfigure</code>命令来重新启动Gitlab</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/gitlab/gitlab.rb</span><br><span class="line">sudo gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+<div class="note info flat"><p>如果想要搭建公网的Gitlab代码管理平台，需要租借域名和购买证书，并进行额外的配置。</p>
+</div>
+<h1>Referencs</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/40371444">搭建属于你自己的 Git 服务器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.aneasystone.com/archives/2018/12/build-your-own-git-server.html">搭建自己的 Git 服务器</a></li>
+<li><a target="_blank" rel="noopener" href="https://about.gitlab.com/install/#ubuntu">Install self-managed Gitlab</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.howtoforge.com/tutorial/how-to-install-and-configure-gitlab-on-ubuntu-16-04/">How to Install and Configure GitLab on Ubuntu 16.04</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Carlos</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://sophistt.github.io/2019/08/08/Git/build-your-own-git-server/">http://sophistt.github.io/2019/08/08/Git/build-your-own-git-server/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/08/20/Vim/vimdiff/"><img class="prev-cover" src="https://i.loli.net/2020/07/22/P87Ubj9eJYsLHqt.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">vimdiff</div></div></a></div><div class="next-post pull-right"><a href="/2019/07/31/Programming/differences-in-commands-source-sh-bash/"><img class="next-cover" src="https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Differences in Serveral Executable Commands in Linux</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/07/20/Git/auto-deploy-github-pages-via-github-actions/" title="(转载) 通过 Github Action 自动部署 Github pages"><img class="cover" src="https://i.loli.net/2020/07/18/31FN46cDIOujAfz.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-20</div><div class="title">(转载) 通过 Github Action 自动部署 Github pages</div></div></a></div><div><a href="/2019/06/28/Git/basic-operation-of-git/" title="Basic Operation of Git and Git Flow Strategy"><img class="cover" src="https://i.loli.net/2020/07/18/gxnJzBQKNyFeYp5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-28</div><div class="title">Basic Operation of Git and Git Flow Strategy</div></div></a></div><div><a href="/2020/07/20/Git/git-submodules/" title="Git Submodules"><img class="cover" src="https://i.loli.net/2020/07/18/gxnJzBQKNyFeYp5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-20</div><div class="title">Git Submodules</div></div></a></div><div><a href="/2019/08/21/Vim/use-vimdiff-as-git-merge-tools/" title="Use Vimdiff as Git Mergetool"><img class="cover" src="https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-21</div><div class="title">Use Vimdiff as Git Mergetool</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/static/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Carlos</div><div class="author-info__description">但行好事，莫问前程</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">48</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Sophistt" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wang.canye@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">A blog that records life and learning, welcome to leave your comments through the chat box.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">远程服务器准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-git-%E7%94%A8%E6%88%B7"><span class="toc-number">1.1.</span> <span class="toc-text">创建 git 用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">创建远程仓库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">免密码提交</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%94%B5%E8%84%91%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5"><span class="toc-number">2.1.</span> <span class="toc-text">本地电脑生成密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8E%88%E6%9D%83%E5%85%AC%E9%92%A5"><span class="toc-number">2.2.</span> <span class="toc-text">远程仓库授权公钥</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">关联远程仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">利用Gitlab搭建私有代码管理平台</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%BF%85%E9%A1%BB%E7%9A%84Ubuntu-Packages"><span class="toc-number">4.1.</span> <span class="toc-text">安装必须的Ubuntu Packages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.2.</span> <span class="toc-text">安装邮件通知服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Gitlab"><span class="toc-number">4.3.</span> <span class="toc-text">安装Gitlab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGitlab"><span class="toc-number">4.4.</span> <span class="toc-text">配置Gitlab</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">Referencs</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/01/29/yuque/Java%20%E8%B0%83%E8%AF%95%E4%B8%8E%E7%9B%91%E6%8E%A7/" title="Java 调试与监控"><img src="https://i.loli.net/2020/07/22/q1hKbxNmuj4f7So.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 调试与监控"/></a><div class="content"><a class="title" href="/2023/01/29/yuque/Java%20%E8%B0%83%E8%AF%95%E4%B8%8E%E7%9B%91%E6%8E%A7/" title="Java 调试与监控">Java 调试与监控</a><time datetime="2023-01-29T02:42:55.000Z" title="Created 2023-01-29 02:42:55">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/28/yuque/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java 多线程"><img src="https://i.loli.net/2020/07/18/xVyet3HZOTaElBi.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 多线程"/></a><div class="content"><a class="title" href="/2023/01/28/yuque/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java 多线程">Java 多线程</a><time datetime="2023-01-28T07:57:02.000Z" title="Created 2023-01-28 07:57:02">2023-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/28/yuque/Java%20%E5%9F%BA%E7%A1%80/" title="Java 基础"><img src="https://i.loli.net/2020/07/18/nargHlvmL9ftBQe.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础"/></a><div class="content"><a class="title" href="/2023/01/28/yuque/Java%20%E5%9F%BA%E7%A1%80/" title="Java 基础">Java 基础</a><time datetime="2023-01-28T07:34:43.000Z" title="Created 2023-01-28 07:34:43">2023-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/24/Control%20Theory/swarm-trajectory-generation-using-Bernstein-basis/" title="Swarm Trajectory Planning Using Bernstein Basis (Paper Reading)"><img src="https://i.loli.net/2020/12/10/PdGIWuXL9iQR24O.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Swarm Trajectory Planning Using Bernstein Basis (Paper Reading)"/></a><div class="content"><a class="title" href="/2022/03/24/Control%20Theory/swarm-trajectory-generation-using-Bernstein-basis/" title="Swarm Trajectory Planning Using Bernstein Basis (Paper Reading)">Swarm Trajectory Planning Using Bernstein Basis (Paper Reading)</a><time datetime="2022-03-24T13:10:28.000Z" title="Created 2022-03-24 13:10:28">2022-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/System%20Theory%20for%20Control/stabilizability/" title="Stabilizability (Control Theory Learning 6)"><img src="https://i.loli.net/2020/07/22/P87Ubj9eJYsLHqt.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Stabilizability (Control Theory Learning 6)"/></a><div class="content"><a class="title" href="/2021/01/28/System%20Theory%20for%20Control/stabilizability/" title="Stabilizability (Control Theory Learning 6)">Stabilizability (Control Theory Learning 6)</a><time datetime="2021-01-28T16:55:28.000Z" title="Created 2021-01-28 16:55:28">2021-01-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Carlos</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadDisqusjs () {
+  function addDisqusjsCSS () {
+    const ele = document.createElement('link')
+    ele.rel = 'stylesheet'
+    ele.href= 'https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css'
+    document.getElementsByTagName('head')[0].appendChild(ele)
+  }
+
+  function initDisqusjs () {
+    window.DISQUS = null
+    new DisqusJS(Object.assign({
+      shortname: 'carlos-5x7rfajzgr',
+      identifier: '2019/08/08/Git/build-your-own-git-server/',
+      url: 'http://sophistt.github.io/2019/08/08/Git/build-your-own-git-server/',
+      title: 'Build Your Own Git Server',
+      apikey: 'fPzRlQddxWqrg1XON0Zwk8yXvz1rv1BCBeRLVpbKZ1BAcY6hzFmyxdDxCJO6oInA',
+    },null))
+  }
+
+
+  window.disqusReset = initDisqusjs
+
+  if (window.disqusJsLoad) initDisqusjs()
+  else {
+    addDisqusjsCSS()
+    getScript('https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js').then(initDisqusjs)
+    window.disqusJsLoad = true
+  }
+}
+
+if ('Disqusjs' === 'Disqusjs' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqusjs)
+  else loadDisqusjs()
+}
+else {
+  function loadOtherComment () {
+    loadDisqusjs()
+  }
+}
+
+</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script>(function(d, w, c) {
+    w.ChatraID = 'JwLA6CnnhzvkT7JZh';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
